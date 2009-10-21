@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.db.models import Q
 
 
 if "notification" in settings.INSTALLED_APPS:
@@ -18,11 +19,10 @@ class FriendshipManager(models.Manager):
         return friends
     
     def are_friends(self, user1, user2):
-        if self.filter(from_user=user1, to_user=user2).count() > 0:
-            return True
-        if self.filter(from_user=user2, to_user=user1).count() > 0:
-            return True
-        return False
+        return self.filter(
+            Q(from_user=user1, to_user=user2) |
+            Q(from_user=user2, to_user=user1)
+        ).count() > 0
     
     def remove(self, user1, user2):
         if self.filter(from_user=user1, to_user=user2):
