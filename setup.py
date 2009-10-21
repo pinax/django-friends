@@ -7,7 +7,7 @@ setup(
     author='James Tauber',
     author_email='jtauber@jtauber.com',
     url='http://github.com/jtauber/django-friends/',
-    packages=find_packages(exclude=['friendsdev']),
+    packages=find_packages(),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
