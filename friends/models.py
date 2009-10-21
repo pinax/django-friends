@@ -92,7 +92,7 @@ class FriendshipInvitationHistory(models.Model):
     to_user = models.ForeignKey(User, related_name="invitations_to_history")
     message = models.TextField()
     sent = models.DateField(default=datetime.date.today)
-    status = models.CharField(max_length=1, choices=INVITE_STATUS)
+    status = models.IntegerField(choices=INVITE_STATUS)
 
 
 def delete_friendship(sender, instance, **kwargs):
