@@ -65,7 +65,7 @@ class FriendshipInvitation(models.Model):
         if not Friendship.objects.are_friends(self.to_user, self.from_user):
             friendship = Friendship(to_user=self.to_user, from_user=self.from_user)
             friendship.save()
-            self.status = "5"
+            self.status = 5
             self.save()
             if notification:
                 notification.send([self.from_user], "friends_accept", {"invitation": self})
@@ -79,7 +79,7 @@ class FriendshipInvitation(models.Model):
     
     def decline(self):
         if not Friendship.objects.are_friends(self.to_user, self.from_user):
-            self.status = "6"
+            self.status = 6
             self.save()
 
 
@@ -101,8 +101,8 @@ def delete_friendship(sender, instance, **kwargs):
         from_user=instance.from_user
     )
     for friendship_invitation in friendship_invitations:
-        if friendship_invitation.status != "8":
-            friendship_invitation.status = "8"
+        if friendship_invitation.status != 7:
+            friendship_invitation.status = 7
             friendship_invitation.save()
 
 
