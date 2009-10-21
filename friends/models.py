@@ -37,14 +37,13 @@ def friend_set_for(user):
 
 
 INVITE_STATUS = (
-    ("1", "Created"),
-    ("2", "Sent"),
-    ("3", "Failed"),
-    ("4", "Expired"),
-    ("5", "Accepted"),
-    ("6", "Declined"),
-    ("7", "Joined Independently"),
-    ("8", "Deleted")
+    (1, "Created"),
+    (2, "Sent"),
+    (3, "Failed"),
+    (4, "Expired"),
+    (5, "Accepted"),
+    (6, "Declined"),
+    (7, "Deleted")
 )
 
 
@@ -58,7 +57,7 @@ class FriendshipInvitation(models.Model):
     to_user = models.ForeignKey(User, related_name="invitations_to")
     message = models.TextField()
     sent = models.DateField(default=datetime.date.today)
-    status = models.CharField(max_length=1, choices=INVITE_STATUS)
+    status = models.IntegerField(choices=INVITE_STATUS)
     
     objects = FriendshipInvitationManager()
     
