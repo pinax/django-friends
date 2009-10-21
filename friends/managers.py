@@ -34,7 +34,7 @@ class FriendshipManager(models.Manager):
 
 class FriendshipInvitationManager(models.Manager):
     def invitations(self, *args, **kwargs):
-        return self.filter(*args, **kwargs).exclude(status__in=["6", "8"])
+        return self.filter(*args, **kwargs).exclude(status__in=[6, 8])
     
     def create_frienship_request(self, from_user, to_user, msg=None):
         inv = self.create(from_usre=from_user, to_user=to_user,
@@ -43,3 +43,12 @@ class FriendshipInvitationManager(models.Manager):
             notification.send([to_user], "friends_invite", {"invitation": inv})
             notification.send([from_user], "friends_invite_sent", {"invitation": inv})
         return inv
+    
+    def invitation_status(self, user1, user2):
+        invs = self.filter(
+            Q(from_user=user1, to_user=user2) | 
+            Q(from_user=user2, to_user=user1)
+        )
+        if not invs:
+            return None
+        return max(inv.status for inv in invs)
