@@ -11,11 +11,11 @@ from friends.models import FriendshipInvitation
 @login_required
 def find_friends(request):
     if request.GET.get("q"):
-        friends = User.objects.filter(username__icontains=request.GET["q"])
+        users = User.objects.filter(username__icontains=request.GET["q"])
     else:
-        friends = None
+        users = None
     return render_to_response("friends/find_friends.html", {
-        "friends": friends,
+        "users": users,
     }, context_instance=RequestContext(request))
 
 """
