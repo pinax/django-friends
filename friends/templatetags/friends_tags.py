@@ -20,7 +20,7 @@ class FriendshipStatusNode(template.Node):
         else:
             status = FriendshipInvitation.objects.invitation_status(user1, user2)
             if status is not None:
-                status = INVITE_STATUS[status-1]
+                status = INVITE_STATUS[int(status)-1]
         if self.varname:
             context[self.varname] = status
             return ''
