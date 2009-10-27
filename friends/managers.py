@@ -39,7 +39,7 @@ class FriendshipInvitationManager(models.Manager):
         return self.filter(*args, **kwargs).exclude(status__in=[6, 8])
     
     def create_friendship_request(self, from_user, to_user, msg=None):
-        inv = self.create(from_usre=from_user, to_user=to_user,
+        inv = self.create(from_user=from_user, to_user=to_user,
             message=msg or "", status=2)
         if notification:
             notification.send([to_user], "friends_invite", {"invitation": inv})
