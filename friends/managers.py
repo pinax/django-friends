@@ -36,7 +36,7 @@ class FriendshipManager(models.Manager):
 
 class FriendshipInvitationManager(models.Manager):
     def invitations(self, *args, **kwargs):
-        return self.filter(*args, **kwargs).exclude(status__in=[6, 8])
+        return self.filter(*args, **kwargs).exclude(status__in=(5, 6, 7))
     
     def create_friendship_request(self, from_user, to_user, msg=None):
         inv = self.create(from_user=from_user, to_user=to_user,
