@@ -27,7 +27,7 @@ class FriendshipStatusNode(template.Node):
         return status
 
 @register.tag
-def frienship_status(parser, token):
+def friendship_status(parser, token):
     bits = token.split_contents()
     tag_name = bits[0]
     bits = bits[1:]
