@@ -1,3 +1,10 @@
+0.2
+---
+
+ * changed the status field on the FriendshipInivtation to be an IntegerField
+   rather than a CharField
+ * removed any code not directly related to Friendship
+
 0.1.5
 -----
 

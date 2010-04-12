@@ -2,12 +2,12 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-friends',
-    version='0.1.5',
+    version='0.2alpha',
     description='friendship, contact and invitation management for the Django web framework',
     author='James Tauber',
     author_email='jtauber@jtauber.com',
     url='http://github.com/jtauber/django-friends/',
-    packages=find_packages(exclude=['friendsdev']),
+    packages=find_packages(),
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
