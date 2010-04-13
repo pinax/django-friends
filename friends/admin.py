@@ -4,15 +4,15 @@ from friends.models import Friendship, FriendshipInvitation, FriendshipInvitatio
 
 
 class FriendshipAdmin(admin.ModelAdmin):
-    list_display = ('id', 'from_user', 'to_user', 'added',)
+    list_display = ["id", "from_user", "to_user", "added"]
 
 
 class FriendshipInvitationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'from_user', 'to_user', 'sent', 'status',)
+    list_display = ["id", "from_user", "to_user", "sent", "status"]
 
 
 class FriendshipInvitationHistoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'from_user', 'to_user', 'sent', 'status',)
+    list_display = ["id", "from_user", "to_user", "sent", "status"]
 
 
 admin.site.register(Friendship, FriendshipAdmin)

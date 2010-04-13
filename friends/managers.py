@@ -10,6 +10,7 @@ else:
 
 
 class FriendshipManager(models.Manager):
+    
     def friends_for_user(self, user):
         friends = []
         qs = self.filter(Q(from_user=user) | Q(to_user=user)).select_related(depth=1)
@@ -35,6 +36,7 @@ class FriendshipManager(models.Manager):
 
 
 class FriendshipInvitationManager(models.Manager):
+    
     def invitations(self, user):
         return self.filter(Q(from_user=user) | Q(to_user=user)).exclude(status__in=(5, 6, 7))
     

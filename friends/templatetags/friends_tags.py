@@ -7,6 +7,7 @@ register = template.Library()
 
 
 class FriendshipStatusNode(template.Node):
+    
     def __init__(self, user1, user2, varname=None):
         self.user1 = user1
         self.user2 = user2
@@ -23,8 +24,9 @@ class FriendshipStatusNode(template.Node):
                 status = INVITE_STATUS[int(status)-1][1]
         if self.varname:
             context[self.varname] = status
-            return ''
+            return ""
         return status
+
 
 @register.tag
 def friendship_status(parser, token):
