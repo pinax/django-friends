@@ -1,4 +1,3 @@
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.template import RequestContext
@@ -23,9 +22,8 @@ def find_friends(request):
 @login_required
 def respond_to_friendship_invitation(request, invitation_id, redirect_to_view=None):
     inv = get_object_or_404(FriendshipInvitation,
-        to_user = request.user,
-        pk = invitation_id,
-    )
+                            to_user=request.user,
+                            pk=invitation_id)
     response = request.GET.get("response", "a")
     if response == "a":
         inv.accept()
