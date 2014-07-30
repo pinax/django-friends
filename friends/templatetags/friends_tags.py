@@ -7,12 +7,12 @@ register = template.Library()
 
 
 class FriendshipStatusNode(template.Node):
-    
+
     def __init__(self, user1, user2, varname=None):
         self.user1 = user1
         self.user2 = user2
         self.varname = varname
-    
+
     def render(self, context):
         user1 = self.user1.resolve(context)
         user2 = self.user2.resolve(context)
@@ -36,7 +36,7 @@ def friendship_status(parser, token):
     if len(bits) == 4:
         if bits[2] != "as":
             raise template.TemplateSyntaxError("This tag should be used like: "
-                "{%% %s user1 user2 [as varname] %%}" % tag_name)
+                                               "{%% %s user1 user2 [as varname] %%}" % tag_name)
         return FriendshipStatusNode(
             parser.compile_filter(bits[0]),
             parser.compile_filter(bits[1]),
@@ -49,4 +49,4 @@ def friendship_status(parser, token):
         )
     else:
         raise template.TemplateSyntaxError("This tag should be used like: "
-            "{%% %s user1 user2 [as varname] %%}" % tag_name)
+                                           "{%% %s user1 user2 [as varname] %%}" % tag_name)
